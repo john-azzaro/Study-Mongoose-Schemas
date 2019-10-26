@@ -1,0 +1,6 @@
+Mongoose schemas study process notes
+======================================
+
+
+Resources
+=========
