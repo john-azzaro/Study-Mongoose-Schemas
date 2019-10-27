@@ -48,8 +48,15 @@ A **schema** is used to define the shape (i.e. layers of properties) of document
 
     })
 ```
- **Inside this new *car* class, you will have a collection of properties.** 
+ **Inside this new *car* class, you will have object full of properties.** Each car that uses this new class will have the specified properties that will eventually be saved to you MongoDB collection. In essence, defining the "shape" of the of the document you are creating that will be saved to MongoDB using Mongoose.
+```JavaScript
+    const car = mongoose.Schema({
+        make: String,
+        model: String,
+        year: Number
+    })
 
+```
 
 
 
