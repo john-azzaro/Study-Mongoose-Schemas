@@ -31,21 +31,25 @@ xyz
 
 <dl>
 
-<br>
 
+
+
+<br>
 
 ## What is a Schema?
-
-<dl>
-
-### abc
-------
-
-<dd>
-xyz
-</dd>
-
-
-<dl>
+A **schema** is used to define the shape (i.e. layers of properties) of documents within a collection in MongoDB. In other words, a schema is a template that you can plug data into and save in a collection inside your database. For instance, in MongoDB Compass for each database you will see "collections". A "document" in a MongoDB "collection" is an individual instance of each schema with unique values in the standard properties.
 
 <br>
+
+## How do you create a Mongoose Schema?
+To create a schema, you first need to set the schema you want to create to a new schema class. For example, suppose we want to create a schema for a *car*. First, you need to create a schema named "car" and set it to a new ```mongoose.Schema``` class. What will happen is that every time you call
+```JavaScript
+    const car = mongoose.Schema({
+
+    })
+```
+
+
+
+
+When you call the *car* schema
