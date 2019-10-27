@@ -5,3 +5,4 @@ Mongoose schemas study process notes
 Resources
 =========
 https://blog.hellojs.org/creating-relationships-between-schemas-in-a-document-based-database-like-mongodb-1f965aecc035
+https://thinkster.io/tutorials/mean-stack/creating-schemas-with-mongoose
