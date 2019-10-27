@@ -42,12 +42,14 @@ A **schema** is used to define the shape (i.e. layers of properties) of document
 <br>
 
 ## How do you create a Mongoose Schema?
-To create a schema, you first need to set the schema you want to create to a new schema class. For example, suppose we want to create a schema for a *car*. First, you need to create a schema named "car" and set it to a new ```mongoose.Schema``` class. What will happen is that every time you call
+**To create a schema, you first need to set the schema you want to create to a new schema class.** For example, suppose we want to create a schema for a *car*. First, you need to create a schema named "car" and set it to a new ```mongoose.Schema``` class. What will happen is that every time you call the *car* schema, it will create new instance of the class.
 ```JavaScript
     const car = mongoose.Schema({
 
     })
 ```
+ **Inside this new *car* class, you will have a collection of properties.** 
+
 
 
 
