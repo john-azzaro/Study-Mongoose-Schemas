@@ -37,7 +37,7 @@ xyz
 <br>
 
 ## What is a Schema?
-A **schema** is used to define the shape (i.e. layers of properties) of documents within a collection in MongoDB. In other words, a schema is a template that you can plug data into and save in a collection inside your database. For instance, in MongoDB Compass for each database you will see "collections". A "document" in a MongoDB "collection" is an individual instance of each schema with unique values in the standard properties.
+A **schema** is used to define the shape (i.e. layers of properties) of documents within a collection in MongoDB. In other words, a schema is a template that you can plug data into and save in a collection inside your database. For instance, in MongoDB Compass for each database you will see "collections". A "document" in a MongoDB "collection" is an individual instance of each schema with unique values in the standard properties. If you want to see how schemas integrate into the larger mongoose app, check out [Mongoose Configuration and Data Modeling Study](https://github.com/john-azzaro/Study-Mongoose-Configuration-and-Data-Modeling "Mongoose Configuration and Data Modeling Study").
 
 <br>
 
@@ -50,7 +50,7 @@ First, you need to create a schema named "carSchema" and set it to a new ```mong
         // properties go here!
     });
 ```
- **Inside this new *carSchema* class, you will have object full of properties.** Each car that uses this new class will have the specified properties that will eventually be saved to you MongoDB collection. In essence, defining the "shape" of the of the document you are creating that will be saved to MongoDB using Mongoose.
+ **Inside this new *carSchema* class, you will have object full of properties.** Each car that uses this new class will have the specified properties that will eventually be saved to you MongoDB collection. Again, what we're doing here is essentially defining the "shape" of the of the document that will be saved to MongoDB using Mongoose, which is a car with the properties of pertinent information: make, model, and year.
 ```JavaScript
     const carSchema = mongoose.Schema({
         make: String,
