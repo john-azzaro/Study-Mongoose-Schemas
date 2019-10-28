@@ -30,7 +30,7 @@ Here are some of the questions covered in this study:
 For most of your model classes, you'll have a certain set of field that you will need to save to your database. In addition, you can use an instance methods like a "serial" method which will expose only the properties you want to the client. 
 </dd>
 
-### There are a few ways to organize your data ina database.
+### There are a few ways to organize your data in a database.
 ------
 
 <dd>
