@@ -51,7 +51,7 @@ First, we need to reference Mongoose to use in this schema model file.
     const mongoose = require('mongoose');
 ```
 
-Next, you need to create a schema named "carSchema" and set it to a new ```mongoose.Schema``` class. What will happen is that every time you call the *carSchema* schema, it will create new instance of the class.
+***Next, you need to create a schema named "carSchema" and set it to a new ```mongoose.Schema``` class.*** What will happen is that every time you call the *carSchema* schema, it will create new instance of the class.
 ```JavaScript
     const carSchema = mongoose.Schema({
         // properties go here!
@@ -67,11 +67,10 @@ Next, you need to create a schema named "carSchema" and set it to a new ```mongo
     });
 ```
 
-***Finally, we need to export the model***. When you export the model, you are essentially packaging it to be used elsewhere in your code. To do this, you need to create a *model* and then export that model.
+***Finally, export the model***. When you export the model, you are essentially packaging it to be used elsewhere in your code. To do this, you need to create a *model* and then export that model.
 ```JavaScript
-    
+    const Car = mongoose.model('Car', carSchema);
+    module.exports = { Book }
 ```
 
 
-
-When you call the *car* schema
