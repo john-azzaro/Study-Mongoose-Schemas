@@ -3,12 +3,14 @@
 <br>
 
 ## What is the Mongoose Schema Study?
-The mongoose schema study is an examination of...
+The mongoose schema study is an examination of Mongoose Schemas, how to create and export them, schema design, and concepts associated with 
 
 Here are some of the questions covered in this study:
 
 * [What are some of the key takeaways from the Mongoose Schema Study?](#What-are-some-of-the-key-takeaways-from-the-Mongoose-Schema-Study)
 * [What is a Schema?](#What-is-a-Schema)
+* [How do you create a Mongoose Schema?](#How-do-you-create-a-Mongoose-Schema)
+* [](#)
 * [](#)
 
 
@@ -44,9 +46,9 @@ If you want to see how schemas integrate into a developed mongoose application, 
 <br>
 
 ## How do you create a Mongoose Schema?
-***To create a schema, you first need to set the schema you want to create to a new schema class.*** For example, suppose we want to create a schema for a car and ascribe certain information about the car we want to commit to the database, such as make, model, and year. 
+To create a schema, you first need to set the schema you want to create to a new schema class. For example, suppose we want to create a schema for a car and ascribe certain information about the car we want to commit to the database, such as make, model, and year. 
 
-First, we need to reference Mongoose to use in this schema model file.
+***First, we need to reference Mongoose (which wr use in this schema model file).*** As a refresher, before this you would need to add this dependency to your package.json file from the npm registry. 
 ```JavaScript
     const mongoose = require('mongoose');
 ```
