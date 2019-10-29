@@ -3,19 +3,16 @@
 <br>
 
 ## What is the Mongoose Schema Study?
-The mongoose schema study is an examination of Mongoose Schemas, how to create and export them, schema design, and concepts associated with 
+Every database is going to need a schema, which represents the way that database is built. The mongoose schema study is an examination of 
+how to create, export, design, and resolve the relationships between schemas using Mongoose and MongoDB.  
 
 Here are some of the questions covered in this study:
 
 * [What are some of the key takeaways from the Mongoose Schema Study?](#What-are-some-of-the-key-takeaways-from-the-Mongoose-Schema-Study)
 * [What is a Schema?](#What-is-a-Schema)
 * [How do you create a Mongoose Schema?](#How-do-you-create-a-Mongoose-Schema)
+* [What is a Mongoose Model and how do you create one?](#What-is-a-Mongoose-Model-and-how-do-you-create-one)
 * [](#)
-* [](#)
-
-
-
-
 
 <br>
 
@@ -41,12 +38,7 @@ Simply put, you ABSOLUTELY need to think about how you want to layout your datab
 
 </dd>
 
-
-
 <dl>
-
-
-
 
 <br>
 
@@ -81,10 +73,16 @@ To create a schema, you first need to set the schema you want to create to a new
     });
 ```
 
-***Finally, export the model***. When you export the model, you are essentially packaging it to be used elsewhere in your code. To do this, you need to create a *model* and then export that model.
+<br>
+
+## What is a Mongoose Model and how do you create one?
+
+After you create your schema, you will need to export your model to use elsewhere in your program. When you create a mongoose model, you are essentially creating a wrapper which packages the schema(s) to be used elsewhere in your code. In other words, you are creating the interface for the database. To create a model, you need to create a *model* and then export that model.
 ```JavaScript
     const Car = mongoose.model('Car', carSchema);
     module.exports = { Book }
 ```
 
+<br>
 
+## 
