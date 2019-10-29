@@ -24,21 +24,39 @@ Here are some of the questions covered in this study:
 ------
 
 <dd>
+
 For most of your model classes, you'll have a certain set of field that you will need to save to your database. In addition, you can use an instance methods like a "serial" method which will expose only the properties you want to the client. 
+
 </dd>
 
 ### Always call your model after everything else (i.e. schemas, virtuals, etc.).
 ------
 
 <dd>
+
 By calling the model after everything else in your model file, such as the schema, any virtuals or instance methods, you make sure that those will actually be included in the model exportation. Doing it before will not work so just make sure to instantiate the model at the very bottom of the document before you export it.
+
 </dd>
 
-### Use a virtual if you want to use schema properties in unique ways
-Virtuals come in pretty handy if you have a host of properties in your schema but you dont have a specific instance of the kind you want to create. The best example to give is concatenating two properties together so they make something new, like you have your first name and last name saved seperately in your database document and you want to have an easy way of concatenating them both together for use in your application. Although you dont have to do this, it seems like creating a virtual to do the job would make your server file much cleaner by simply calling the virtual rather than doing the work potentially many times over. In other words, its worth the effort just to create a virtual even if you just do it once because you never know when you will need it again.
+### Use a virtual if you want to use schema properties in unique ways.
+------
 
+<dd>
 
+Virtuals come in pretty handy if you have a host of properties in your schema but you dont have a specific instance of the kind you want to create. The best example to give is concatenating two properties together so they make something new, like you have your first name and last name saved seperately in your database document and you want to have an easy way of concatenating them both together for use in your application. 
 
+Although you dont have to do this, it seems like creating a virtual to do the job would make your server file much cleaner by simply calling the virtual rather than doing the work potentially many times over. In other words, its worth the effort just to create a virtual even if you just do it once because you never know when you will need it again.
+
+</dd>
+
+### Use an instance method for additional security.
+------
+
+<dd>
+
+Using instance methods is an extremely useful way to ensure that the client that requests information only gets back the information you want to show them. Suppose you had a collection of users and each document had not only the names of the users, but the passwords as well. You dont want other people to have access to that information so you would make an instance method that would *serialize* the schema so that when the client requests users, properties like "password" and "address" are kept secret. In many ways, instance methods are security methods.
+
+</dd>
 
 ### Always consider how data relates to each other in your project to keep your database organized.
 ------
@@ -123,3 +141,9 @@ Suppose that in the example of the Car model, we want the user to have access to
         }
     }
 ```
+
+<br>
+
+## What are relationship types and why are they important?
+When you store data inside a database, you need to give particular consideration to how the data in that database *relates* to one another.
+

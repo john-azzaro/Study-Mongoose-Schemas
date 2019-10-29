@@ -4,6 +4,7 @@ Mongoose schemas study process notes
 
 Resources
 =========
+https://www.learnhowtoprogram.com/ruby-and-rails/ruby-database-basics/database-schema-and-relationship-types
 https://blog.hellojs.org/creating-relationships-between-schemas-in-a-document-based-database-like-mongodb-1f965aecc035
 https://thinkster.io/tutorials/mean-stack/creating-schemas-with-mongoose
 https://docs.mongodb.com/manual/core/data-model-design/
