@@ -35,7 +35,9 @@ For most of your model classes, you'll have a certain set of field that you will
 
 <dd>
 
-Suppose you have a basic blog application and you have a a single user with a single user name. This would be considered a one-to-one. Conversely, you can have a a one-to-many relationship if you have a blog post by that single user but comments from multiple users. And to take the idea even further, you could have a blog with a many-to-many relationship by having multiple authors and multiple comments with multiple users for a single blog post. You ABSOLUTELY need to think about how you want to layout your database and schemas so that you can optimize your database organization.
+Suppose you have a basic blog application and you have a a single user with a single user name. This would be considered a one-to-one. Conversely, you can have a a one-to-many relationship if you have a blog post by that single user but comments from multiple users. And to take the idea even further, you could have a blog with a many-to-many relationship by having multiple authors and multiple comments with multiple users for a single blog post. 
+
+Simply put, you ABSOLUTELY need to think about how you want to layout your database and schemas so that you can optimize your database organization.
 
 </dd>
 
