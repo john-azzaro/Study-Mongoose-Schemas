@@ -145,5 +145,44 @@ Suppose that in the example of the Car model, we want the user to have access to
 <br>
 
 ## What are relationship types and why are they important?
-When you store data inside a database, you need to give particular consideration to how the data in that database *relates* to one another.
+When you store data inside a database, you need to give particular consideration to how the data in that database *relates* to one another. Here are three of the most common relationship types:
+
+***One-to-One***  relationships exist when you need only one account for one user. In the basic blog example, when a single author has a single user username, that is a direct *one-to-one* realtionship between the author and the username.  
+
+***One-to-Many*** realtionships exists when you have one account with multiple associated accounts. In the basic blog example, one blog post could have many comments from different users. In other words, you can only have one blog post for for the many comments made on that blog post, so there is a *one-to-many* realtionship between the two.
+
+***Many-to-Many*** relationships exist when you have you have multiple accounts with multiple associated accounts. In the basic blog example, a *many-to-many* relationship exists when a single blog post has multiple authors.
+
+<br>
+
+## What are embedded models?
+Embedded models are essentially associated data stored with your document. For example, suppose we have a document in our database for instances of Cars that will have the make, model, and the year of the car that look something like this:
+```JavaScript
+    {
+        "make": "Ferrai",
+        "model": "458",
+        "year": "2015"
+    }
+```
+Now suppose we want to include a collection of reviews that is tied to this 2015 Ferrari 458 document in our collection. We know that there is going to be a *one-to-many* realtionship because we have only ONE post about the 2015 Ferrari 458 but we want to have MANY reviews. We also know that the front-end will to retrieve BOTH the post AND also the reviews. 
+
+To do this, you need to store the reviews in an array!
+```JavaScript
+    {
+        "make": "Ferrai",
+        "model": "458",
+        "year": "2015",
+        "reviews": [                                              // array of objects
+            {
+                "content": "This Ferrari is the best!"            // each object is a review
+            },
+            {
+                "content": "Ferrari has done it again!"
+            },                
+            {
+                "content": "I love horses, so I love Ferraris!"
+            },                
+        ]
+    }
+```
 
