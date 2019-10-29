@@ -1,7 +1,8 @@
 /* 
 In the following example, the objective is to create a model of a Car such that the schema that all documents 
 in our database will have will have make, model, year, and rating. We also have a virtual which can manipulate 
-the properties in our Schema to create specific values. Additionally
+the properties in our Schema to create specific values. Additionally, you can use an instance method if you need 
+to keep sensitive information from the client.
 
 */
 
