@@ -23,19 +23,19 @@ Here are some of the questions covered in this study:
 
 <dl>
 
-### Mongoose Schemas let you validate required fields.
+### Simply put, Mongoose Schemas let you validate required fields.
 ------
 
 <dd>
 For most of your model classes, you'll have a certain set of field that you will need to save to your database. In addition, you can use an instance methods like a "serial" method which will expose only the properties you want to the client. 
 </dd>
 
-### There are a few ways to organize your data in a database.
+### Considering how data relates to each other is crucial to organizing your data.
 ------
 
 <dd>
 
-For example
+Suppose you have a basic blog application and you have a a single user with a single user name. This would be considered a one-to-one. Conversely, you can have a a one-to-many relationship if you have a blog post by that single user but comments from multiple users. And to take the idea even further, you could have a blog with a many-to-many relationship by having multiple authors and multiple comments with multiple users for a single blog post. You ABSOLUTELY need to think about how you want to layout your database and schemas so that you can optimize your database organization.
 
 </dd>
 
