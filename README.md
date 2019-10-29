@@ -106,4 +106,15 @@ the car into one cohesive string. To do this, you need to call the schema (e.g. 
 <br>
 
 ## What is an instance method and how do you create one?
-An instance method perfoms a specific action on a specific instance of a document rather than the entire document. In essence, this is liek a security step that ensures that only select properties in your schema are shown to the client. This would come in handy if you had documents that stored user information and if a client wanted to see all the users in the database, they coudl EXCEPT for certain properties that are meant to keep private, like passwords, addresses, etc. Suppose that in the example of the Car model, we want the user to have access to all the 
+An instance method perfoms a specific action on a specific instance of a document rather than the entire document. In essence, this is liek a security step that ensures that only select properties in your schema are shown to the client. This would come in handy if you had documents that stored user information and if a client wanted to see all the users in the database, they coudl EXCEPT for certain properties that are meant to keep private, like passwords, addresses, etc. 
+
+Suppose that in the example of the Car model, we want the user to have access to all the properties in the Car model EXCEPT the reviews, which are meant to be kept private. For those times you want the Car model to restrict the properties like this, you would then call this specific "serialize" method in the server.js file.
+```JavaScript
+    carSchema.methods.serialize = function() {
+        return {
+            make: String,
+            model: String,
+            year: Number
+        }
+    }
+```
