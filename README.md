@@ -27,6 +27,14 @@ Here are some of the questions covered in this study:
 For most of your model classes, you'll have a certain set of field that you will need to save to your database. In addition, you can use an instance methods like a "serial" method which will expose only the properties you want to the client. 
 </dd>
 
+### Always call your model after everything else (i.e. schemas, virtuals, etc.).
+------
+
+<dd>
+By calling the model after everything else in your model file, such as the schema, any virtuals or instance methods, you make sure that those will actually be included in the model exportation. Doing it before will not work so just make sure to instantiate the model at the very bottom of the document before you export it.
+</dd>
+
+
 ### Always consider how data relates to each other in your project to keep your database organized.
 ------
 
@@ -69,7 +77,8 @@ To create a schema, you first need to set the schema you want to create to a new
     const carSchema = mongoose.Schema({
         make: String,
         model: String,
-        year: Number
+        year: Number,
+        rating: String
     });
 ```
 
@@ -80,9 +89,21 @@ To create a schema, you first need to set the schema you want to create to a new
 After you create your schema, you will need to export your model to use elsewhere in your program. When you create a mongoose model, you are essentially creating a wrapper which packages the schema(s) to be used elsewhere in your code. In other words, you are creating the interface for the database. To create a model, you need to create a *model* and then export that model.
 ```JavaScript
     const Car = mongoose.model('Car', carSchema);
-    module.exports = { Book }
+    module.exports = { Car }
 ```
 
 <br>
 
-## 
+## What is a virtual and how do you create one?
+A virtual allows you to manipulate the properties inside your schema object for use in your application. In our Car example, suppose we want to concatenate (combine) the make and model of
+the car into one cohesive string. To do this, you need to call the schema (e.g. carSchema), define the virtual name (e.g. fullCarName), and then return the desired value. In the example below, we'll use a template literal to concatenate the properties of make and model to create a full car name. Note here that we use the *.trim* method do remove any whitespace from the properties.
+```JavaScript
+    carSchema.virtual('fullCarName', function() {
+        return `${this.make} ${this.model}`.trim();
+    });
+```
+
+<br>
+
+## What is an instance method and how do you create one?
+An instance method perfoms a specific action on a specific instance of a document rather than the entire document. In essence, this is liek a security step that ensures that only select properties in your schema are shown to the client. This would come in handy if you had documents that stored user information and if a client wanted to see all the users in the database, they coudl EXCEPT for certain properties that are meant to keep private, like passwords, addresses, etc. Suppose that in the example of the Car model, we want the user to have access to all the 
