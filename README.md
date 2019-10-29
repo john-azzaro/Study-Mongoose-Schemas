@@ -12,6 +12,12 @@ Here are some of the questions covered in this study:
 * [What is a Schema?](#What-is-a-Schema)
 * [How do you create a Mongoose Schema?](#How-do-you-create-a-Mongoose-Schema)
 * [What is a Mongoose Model and how do you create one?](#What-is-a-Mongoose-Model-and-how-do-you-create-one)
+* [What is a virtual and how do you create one?](#What-is-a-virtual-and-how-do-you-create-one)
+* [What is an instance method and how do you create one?](#What-is-an-instance-method-and-how-do-you-create-one)
+* [What are relationship types and why are they important?](#What-are-relationship-types-and-why-are-they-important)
+* [What are embedded models?](#What-are-embedded-models)
+* [](#)
+* [](#)
 * [](#)
 
 <br>
@@ -108,8 +114,7 @@ To create a schema, you first need to set the schema you want to create to a new
 <br>
 
 ## What is a Mongoose Model and how do you create one?
-
-After you create your schema, you will need to export your model to use elsewhere in your program. When you create a mongoose model, you are essentially creating a wrapper which packages the schema(s) to be used elsewhere in your code. In other words, you are creating the interface for the database. To create a model, you need to create a *model* and then export that model.
+***A mongoose model is essentially creating a wrapper which packages the schema(s) to be used elsewhere in your code.*** After you create your schema, you will need to export your model to use elsewhere in your program which requires a model in order to export. In other words, you are creating the interface for the database using a model. To create a model, you need to create a *model* and then export that model.
 ```JavaScript
     const Car = mongoose.model('Car', carSchema);
     module.exports = { Car }
@@ -129,7 +134,7 @@ the car into one cohesive string. To do this, you need to call the schema (e.g. 
 <br>
 
 ## What is an instance method and how do you create one?
-An instance method perfoms a specific action on a specific instance of a document rather than the entire document. In essence, this is liek a security step that ensures that only select properties in your schema are shown to the client. This would come in handy if you had documents that stored user information and if a client wanted to see all the users in the database, they coudl EXCEPT for certain properties that are meant to keep private, like passwords, addresses, etc. 
+***An instance method perfoms a specific action on a specific instance of a document rather than the entire document.*** In essence, this is liek a security step that ensures that only select properties in your schema are shown to the client. This would come in handy if you had documents that stored user information and if a client wanted to see all the users in the database, they coudl EXCEPT for certain properties that are meant to keep private, like passwords, addresses, etc. 
 
 Suppose that in the example of the Car model, we want the user to have access to all the properties in the Car model EXCEPT the reviews, which are meant to be kept private. For those times you want the Car model to restrict the properties like this, you would then call this specific "serialize" method in the server.js file.
 ```JavaScript
@@ -156,7 +161,7 @@ When you store data inside a database, you need to give particular consideration
 <br>
 
 ## What are embedded models?
-Embedded models are essentially associated data stored with your document. For example, suppose we have a document in our database for instances of Cars that will have the make, model, and the year of the car that look something like this:
+***Embedded models are essentially associated data stored with your document.*** For example, suppose we have a document in our database for instances of Cars that will have the make, model, and the year of the car that look something like this:
 ```JavaScript
     {
         "make": "Ferrai",
@@ -180,9 +185,11 @@ To do this, you need to store the reviews in an array!
                 "content": "Ferrari has done it again!"
             },                
             {
-                "content": "I love horses, so I love Ferraris!"
+                "content": "I love horses... I love Ferraris!"
             },                
         ]
     }
 ```
+
+
 
