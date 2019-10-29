@@ -23,14 +23,14 @@ Here are some of the questions covered in this study:
 
 <dl>
 
-### Simply put, Mongoose Schemas let you validate required fields.
+### Mongoose Schemas let you validate required fields.
 ------
 
 <dd>
 For most of your model classes, you'll have a certain set of field that you will need to save to your database. In addition, you can use an instance methods like a "serial" method which will expose only the properties you want to the client. 
 </dd>
 
-### Considering how data relates to each other is crucial to organizing your data.
+### Always consider how data relates to each other in your project to keep your database organized.
 ------
 
 <dd>
