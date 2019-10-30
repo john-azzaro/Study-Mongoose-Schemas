@@ -206,14 +206,18 @@ To do this, you need to store the reviews in an array!
 * ```$slice``` will modify the *.push* operator to limit the size of updated arrays.
 * ```$sort``` will modify *.push* operator to reorder documents stored in an array.
 
-
-
+For example, using the ```$push```  will add to the subarray in your car document. And important to note is that if a field like "reviews" is not in the document, mongo will add it.
 ```
-    db.cars.update(
+    db.cars.update(                                           // in the cars document update as follows...
         {
             make: 'Ferrari',
             model: '458',
             year: 2015,
+        }
+        $push: {                                              // push to the document...
+            reviews: {                                        // the reviews field...
+                "content": "This Ferrari is awesome"          // wirh the content...
+            }
         }
     )
 ```
