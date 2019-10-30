@@ -191,18 +191,21 @@ To do this, you need to store the reviews in an array!
     }
 ```
 
+<br>
+
 ### How do you work with embedded model arrays in Mongo Shell?
 ---------
-When working with arrays, Mongo has array update operators and array query operators. For example, if you want to add, remove, etc elements to an array you use some of the many methods available.
+***When working with arrays, Mongo has array update operators and array query operators.*** For example, if you want to add, remove, etc elements to an array you use some of the many methods available.
 
-```$push``` will add items to an array.
-```$pull``` will remove all elements that match the specified query.
-```$addToSet``` will add elements to an array only if they do not exist.
-```$pullAll``` will remove all matching values from an array.
-```$each``` will modify *.push* and *.addToSet* operators and append multiple items fro array updates.
-```$position``` will modify *.push* operator to specify the position in the array to add elements.
-```$slice``` will modify the *.push* operator to limit the size of updated arrays.
-```$sort``` will modify *.push* operator to reorder documents stored in an array.
+* ```$push``` will add items to an array.
+* ```$pull``` will remove all elements that match the specified query.
+* ```$addToSet``` will add elements to an array only if they do not exist.
+* ```$pullAll``` will remove all matching values from an array.
+* ```$each``` will modify *.push* and *.addToSet* operators and append multiple items fro array updates.
+* ```$position``` will modify *.push* operator to specify the position in the array to add elements.
+* ```$slice``` will modify the *.push* operator to limit the size of updated arrays.
+* ```$sort``` will modify *.push* operator to reorder documents stored in an array.
+
 
 
 ```
