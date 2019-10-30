@@ -233,10 +233,10 @@ For example, using the ```$push```  will add to the subarray in your car documen
         make: String,
         model: String,
         year: Number,
-        reviews: [reviewSchema]                          // 2. nest schema inside another schema.
+        reviews: [reviewSchema]                               // 2. Nest schema inside another schema.
     });
 
-    const reviewSchema = mongoose.Schema({               // 1. create schema to be nested.
+    const reviewSchema = mongoose.Schema({                    // 1. Create schema to be nested.
         content: 'string' 
     });     
 ```
@@ -246,14 +246,14 @@ Then, mongoose can be used to create a review.
     const Car = mongoose.Schema('Car', carSchema);
 
     app.post('/reviews', function(req, res) {
-        Car.findOne({                                   // Find an instance with the make.
+        Car.findOne({                                         // Find an instance with the make.
             make: 'Title I want to find'
         })
-        .then(post => {                                 // Then post the car reviews content.
+        .then(post => {                                       // Then post the car reviews content.
             post.reviews.push({
                 content: 'This is a review'
             });
-            post.save();                                // And save to your database!
+            post.save();                                      // And save to your database!
         });
     });
 ```
