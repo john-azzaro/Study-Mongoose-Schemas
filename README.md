@@ -16,8 +16,8 @@ Here are some of the questions covered in this study:
 * [What is an instance method and how do you create one?](#What-is-an-instance-method-and-how-do-you-create-one)
 * [What are relationship types and why are they important?](#What-are-relationship-types-and-why-are-they-important)
 * [What are embedded models?](#What-are-embedded-models)
-* [](#)
-* [](#)
+    * [How do you work with embedded model arrays in Mongo Shell?](#How-do-you-work-with-embedded-model-arrays-in-Mongo-Shell)
+    * [How do you work with embedded model arrays in Mongoose?](#How-do-you-work-with-embedded-model-arrays-in-Mongoose)
 * [](#)
 
 <br>
@@ -195,7 +195,7 @@ To do this, you need to store the reviews in an array!
 
 ### How do you work with embedded model arrays in Mongo Shell?
 ---------
-***When working with arrays, Mongo has array update operators and array query operators.*** For example, if you want to add, remove, etc elements to an array you use some of the many methods available.
+***When working with arrays of embedded objects in the MongoDB shell, you can use array update operators and array query operators.*** For example, if you want to add, remove, etc elements to an array you use some of the many methods available.
 
 * ```$push``` will add items to an array.
 * ```$pull``` will remove all elements that match the specified query.
@@ -222,14 +222,22 @@ For example, using the ```$push```  will add to the subarray in your car documen
     )
 ```
 
-
-
-
-
-
 <br>
 
 ### How do you work with embedded model arrays in Mongoose?
 --------
+***When working with arrays of embedded objects with Mongooose, you can use subdocuments (i.e. documents nested inside documents).*** In other words, a schema can contain other sub-schemas.
 
+```JavaScript
+    const carSchema = mongoose.Schema({
+        make: String,
+        model: String,
+        year: Number,
+        reviews: [reviewSchema]                          // nested schema.
+    });
+
+    const reviewSchema = mongoose.Schema({               // schema to be nested.
+        content: 'string' 
+    });     
+```
 

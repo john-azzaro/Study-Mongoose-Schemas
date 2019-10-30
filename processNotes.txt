@@ -9,3 +9,4 @@ https://blog.hellojs.org/creating-relationships-between-schemas-in-a-document-ba
 https://thinkster.io/tutorials/mean-stack/creating-schemas-with-mongoose
 https://docs.mongodb.com/manual/core/data-model-design/
 https://docs.mongodb.com/manual/core/data-modeling-introduction/
+https://mongoosejs.com/docs/subdocs.html   --   subdocument docs
