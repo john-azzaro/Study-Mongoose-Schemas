@@ -37,12 +37,12 @@ For most of your model classes, you'll have a certain set of field that you will
 
 </dd>
 
-### Always call your model after everything else (i.e. schemas, virtuals, etc.).
+### Make sure to call your model last (i.e. schemas, virtuals, etc.).
 ------
 
 <dd>
 
-By calling the model after everything else in your model file, such as the schema, any virtuals or instance methods, you make sure that those will actually be included in the model exportation. Doing it before will not work so just make sure to instantiate the model at the very bottom of the document before you export it.
+By calling the model after everything else assocated with your model, such as the schema, any virtuals or instance methods, you make sure that those will actually be included in the model exportation. Why? You simply need to make sure everything like schema, virtuals, etc. is included before exportation as doing it before may not work as intended. For example, if you export before you include an instance method means that that instance method may not execute with your model.
 
 </dd>
 
@@ -109,7 +109,7 @@ To create a schema, you first need to set the schema you want to create to a new
         make: String,
         model: String,
         year: Number,
-        rating: String
+        reviews: String
     });
 ```
 
@@ -144,7 +144,8 @@ Suppose that in the example of the Car model, we want the user to have access to
         return {
             make: String,
             model: String,
-            year: Number
+            year: Number,
+            reviews: String
         }
     }
 ```
@@ -163,9 +164,10 @@ When you store data inside a database, you need to give particular consideration
 <br>
 
 ## What are embedded models?
-***Embedded models are essentially associated data stored with your document.*** For example, suppose we have a document in our database for instances of Cars that will have the make, model, and the year of the car that look something like this:
+***Embedded models are essentially associated data stored with your document.*** For example, suppose we have a document in our database for instances of Cars that will have the author, make, model, and the year of the car that look something like this:
 ```JavaScript
     {
+        "author": "Sam LeMan"
         "make": "Ferrai",
         "model": "458",
         "year": "2015"
@@ -176,6 +178,7 @@ Now suppose we want to include a collection of reviews that is tied to this 2015
 To do this, you need to store the reviews in an array!
 ```JavaScript
     {
+        "author": "Sam LeMan"
         "make": "Ferrai",
         "model": "458",
         "year": "2015",
@@ -212,6 +215,7 @@ For example, using the ```$push```  will add to the subarray in your car documen
 ```
     db.cars.update(                                           // in the cars document update as follows...
         {
+            author: 'Sam LeMan'
             make: 'Ferrari',
             model: '458',
             year: 2015,
@@ -232,6 +236,7 @@ For example, using the ```$push```  will add to the subarray in your car documen
 
 ```JavaScript
     const carSchema = mongoose.Schema({
+        author: String,
         make: String,
         model: String,
         year: Number,
@@ -280,9 +285,98 @@ In the example below, we use the ```id()``` method to find the first review in o
 <br>
 
 ## What is Database Normalization?
-***Database normalization ***
+***Database normalization is used to eliminate duplication of data, reduce inconsistencies, and ensure data entegrity.*** For example, suppose have you have a car review with a single author BUT that author can have multiple reviews. That author has *one-to-many* relationship with those other reviews. Now suppsoe that for each of those reviews, the first and last name of that author are repeated for each review that they make (i.e. each document in the collection of the database).
 
-For example, suppose have you have a car review with a single author BUT that author can have multiple reviews. That author has *one-to-many* relationship with those other reviews. Now suppsoe that for each of those reviews, the first and last name of that author are repeated for each review that they make (i.e. each document in the collection of the database).
+***Database normalization is important because it makes updating things like user information much easier.*** For example, suppose that if the author had to change thier first or last name, you would need to go through every document and update that name. You can imagine how hard this could be if the author had hundreds of posts.
+
+<br>
+
+## How do you implement database normalization?
+To implement database normalization, you need to create a seperate collection for something like "authors" and then link the review (i.e. post) to the author information that is stored in one single place. 
+
+In this example, we'll create a seperate collection for author and link them to to each review we make. To do this, we need to first create a new authorSchema, create a new author mdoel, and link that schema to the author property in the carSchema.
+
+### STEP 1: Create a new schema for your updateable information (e.g. author):
+------
+In this step, instead of having your author propertied (i.e. first name, last name, user name) in each and every document, we want ot create a seperae schema.
+```JavaScript
+    const authorSchema = mongoose.Schema({                // create a new author schema
+        firstName: String,
+        lastName: String,
+        userName: {
+            type: String,
+            unique: true
+        }
+    });
+```
+
+### STEP 2: Link that schema to your master schema:
+------
+```JavaScript
+    const authorSchema = mongoose.Schema({                
+        firstName: String,
+        lastName: String,
+        userName: {
+            type: String,
+            unique: true
+        }
+    });
+
+    const carSchema = mongoose.Schema({                   // car schema
+        author: {                                         // for the author property...
+            type: mongoose.Schema.Types.ObjectId,         // ... 
+            ref: 'Author'
+        },    
+        make: String,
+        model: String,
+        year: Number,
+        reviews: [reviewSchema] 
+    });
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```JavaScript
+        const authorSchema = mongoose.Schema({                // author schema
+        firstName: String,
+        lastName: String,
+        userName: {
+            type: String,
+            unique: true
+        }
+    });
+
+    const carSchema = mongoose.Schema({                       // car schema
+        author: String,                                       // 
+        make: String,
+        model: String,
+        year: Number,
+        reviews: [reviewSchema] 
+    });
+
+    const reviewSchema = mongoose.Schema({                    // reviews schema
+        content: String 
+    });   
+  
+
+
+
+
+```
+
+
+
 
 
 
