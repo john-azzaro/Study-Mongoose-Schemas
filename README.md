@@ -258,5 +258,12 @@ Then, mongoose can be used to create a review.
     });
 ```
 
+***If you want to find an embedded model (i.e. subdocument), you can use an ```id()``` method to search for it.*** The ```id()``` method can be used in combination with the ```remove()``` method to delete specific subdocuments. 
+
+In the example below, we use the ```id()``` method to find the first review in our array of car reviews assocated with the overall car review post.
+```JavaScript
+
+```
+
 
 
