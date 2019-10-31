@@ -247,9 +247,9 @@ Then, mongoose can be used to create a review.
 
     app.post('/reviews', function(req, res) {
         Car.findOne({                                         // Find an instance with the make.
-            make: 'Title I want to find'
+            make: 'Make I want to find'
         })
-        .then(post => {                                       // Then post the car reviews content.
+        .then(post => {                                       // Then return the car reviews content.
             post.reviews.push({
                 content: 'This is a review'
             });
@@ -262,7 +262,17 @@ Then, mongoose can be used to create a review.
 
 In the example below, we use the ```id()``` method to find the first review in our array of car reviews assocated with the overall car review post.
 ```JavaScript
+    const Car = mongoose.Schema('Car', carSchema);
 
+    app.post('/reviews', function(req, res) {
+        Car.findOne({                                             // Find an instance with the make.
+            make: 'Make I want to find'
+        })
+        .then(post => {                                           // Then return the car reviews content. 
+            post.comments.id(post.comments[0]._id).remove();      // and for the comment at 0 remove it.
+            post.save();                                          // and save to database.
+        });
+    });
 ```
 
 
