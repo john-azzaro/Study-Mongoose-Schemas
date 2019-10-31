@@ -3,7 +3,7 @@
 <br>
 
 ## What is the Mongoose Schema Study?
-Every database is going to need a schema, which represents the way that database is built. The mongoose schema study is an examination of 
+Every database document needs a schema, which represents the way that each and every part of a database is built. The mongoose schema study is an examination of 
 how to create, export, design, and resolve the relationships between schemas using Mongoose and MongoDB.  
 
 Here are some of the questions covered in this study:
@@ -20,7 +20,6 @@ Here are some of the questions covered in this study:
     * [How do you work with embedded model arrays in Mongoose?](#How-do-you-work-with-embedded-model-arrays-in-Mongoose)
 * [What is Database Normalization?](#What-is-Database-Normalization?)
 * [How do you implement database normalization?](#How-do-you-implement-database-normalization)
-* [](#)
 
 <br>
 
