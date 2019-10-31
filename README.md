@@ -19,7 +19,7 @@ Here are some of the questions covered in this study:
     * [How do you work with embedded model arrays in Mongo Shell?](#How-do-you-work-with-embedded-model-arrays-in-Mongo-Shell)
     * [How do you work with embedded model arrays in Mongoose?](#How-do-you-work-with-embedded-model-arrays-in-Mongoose)
 * [What is Database Normalization?](#What-is-Database-Normalization?)
-* [](#)
+* [How do you implement database normalization?](#How-do-you-implement-database-normalization)
 * [](#)
 
 <br>
@@ -285,7 +285,7 @@ In the example below, we use the ```id()``` method to find the first review in o
 <br>
 
 ## What is Database Normalization?
-***Database normalization is used to eliminate duplication of data, reduce inconsistencies, and ensure data entegrity.*** For example, suppose have you have a car review with a single author BUT that author can have multiple reviews. That author has *one-to-many* relationship with those other reviews. Now suppsoe that for each of those reviews, the first and last name of that author are repeated for each review that they make (i.e. each document in the collection of the database).
+***Database normalization is used to eliminate duplication of data, reduce inconsistencies, and ensure data entegrity.*** In other words, database normalization allows you to manage certain properties seperately from your document. For example, suppose have you have a car review with a single author BUT that author can have multiple reviews. That author has *one-to-many* relationship with those other reviews. Now suppsoe that for each of those reviews, the first and last name of that author are repeated for each review that they make (i.e. each document in the collection of the database).
 
 ***Database normalization is important because it makes updating things like user information much easier.*** For example, suppose that if the author had to change thier first or last name, you would need to go through every document and update that name. You can imagine how hard this could be if the author had hundreds of posts.
 
@@ -296,9 +296,10 @@ To implement database normalization, you need to create a seperate collection fo
 
 In this example, we'll create a seperate collection for author and link them to to each review we make. To do this, we need to first create a new authorSchema, create a new author mdoel, and link that schema to the author property in the carSchema.
 
+
 ### STEP 1: Create a new schema for your updateable information (e.g. author):
 ------
-In this step, instead of having your author propertied (i.e. first name, last name, user name) in each and every document, we want ot create a seperae schema.
+In this step, instead of having your author propertied (i.e. first name, last name, user name) in each and every document, we want to create a seperae schema.
 ```JavaScript
     const authorSchema = mongoose.Schema({                // create a new author schema
         firstName: String,
@@ -310,10 +311,10 @@ In this step, instead of having your author propertied (i.e. first name, last na
     });
 ```
 
-### STEP 2: Link that schema to your master schema:
-------
+
+### STEP 2: Create a model for your author Schema:
 ```JavaScript
-    const authorSchema = mongoose.Schema({                
+    const authorSchema = mongoose.Schema({    
         firstName: String,
         lastName: String,
         userName: {
@@ -322,9 +323,27 @@ In this step, instead of having your author propertied (i.e. first name, last na
         }
     });
 
-    const carSchema = mongoose.Schema({                   // car schema
-        author: {                                         // for the author property...
-            type: mongoose.Schema.Types.ObjectId,         // ... 
+    const Author = mongoose.model('Author', authorSchema);       // author model
+```
+
+
+### STEP 3: Link that schema to your master schema:
+------
+```JavaScript
+    const authorSchema = mongoose.Schema({             
+        firstName: String,
+        lastName: String,
+        userName: {
+            type: String,
+            unique: true
+        }
+    });
+
+    const Author = mongoose.model('Author', authorSchema);   
+    
+    const carSchema = mongoose.Schema({                   // In the schema you want to link another schema:
+        author: {                                         // reference the author!
+            type: mongoose.Schema.Types.ObjectId,         
             ref: 'Author'
         },    
         make: String,
@@ -332,7 +351,6 @@ In this step, instead of having your author propertied (i.e. first name, last na
         year: Number,
         reviews: [reviewSchema] 
     });
-
 ```
 
 
@@ -347,33 +365,13 @@ In this step, instead of having your author propertied (i.e. first name, last na
 
 
 
-```JavaScript
-        const authorSchema = mongoose.Schema({                // author schema
-        firstName: String,
-        lastName: String,
-        userName: {
-            type: String,
-            unique: true
-        }
-    });
-
-    const carSchema = mongoose.Schema({                       // car schema
-        author: String,                                       // 
-        make: String,
-        model: String,
-        year: Number,
-        reviews: [reviewSchema] 
-    });
-
-    const reviewSchema = mongoose.Schema({                    // reviews schema
-        content: String 
-    });   
-  
 
 
 
 
-```
+
+
+
 
 
 
