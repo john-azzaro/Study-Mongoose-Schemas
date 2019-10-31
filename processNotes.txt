@@ -10,3 +10,4 @@ https://thinkster.io/tutorials/mean-stack/creating-schemas-with-mongoose
 https://docs.mongodb.com/manual/core/data-model-design/
 https://docs.mongodb.com/manual/core/data-modeling-introduction/
 https://mongoosejs.com/docs/subdocs.html   --   subdocument docs
+https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-1 -- schema designs

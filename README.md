@@ -153,7 +153,7 @@ Suppose that in the example of the Car model, we want the user to have access to
 <br>
 
 ## What are relationship types and why are they important?
-When you store data inside a database, you need to give particular consideration to how the data in that database *relates* to one another. Here are three of the most common relationship types:
+When you store data inside a database, you need to give particular consideration to how the data in that database *relates* to one another. **Cardinality** refers to the relationship Here are three of the most common relationship types:
 
 ***One-to-One***  relationships exist when you need only one account for one user. In the basic blog example, when a single author has a single user username, that is a direct *one-to-one* realtionship between the author and the username.  
 
@@ -352,7 +352,6 @@ In this step, instead of having your author propertied (i.e. first name, last na
         reviews: [reviewSchema] 
     });
 ```
-
 
 
 
