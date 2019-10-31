@@ -18,6 +18,8 @@ Here are some of the questions covered in this study:
 * [What are embedded models?](#What-are-embedded-models)
     * [How do you work with embedded model arrays in Mongo Shell?](#How-do-you-work-with-embedded-model-arrays-in-Mongo-Shell)
     * [How do you work with embedded model arrays in Mongoose?](#How-do-you-work-with-embedded-model-arrays-in-Mongoose)
+* [What is Database Normalization?](#What-is-Database-Normalization?)
+* [](#)
 * [](#)
 
 <br>
@@ -274,6 +276,13 @@ In the example below, we use the ```id()``` method to find the first review in o
         });
     });
 ```
+
+<br>
+
+## What is Database Normalization?
+***Database normalization ***
+
+For example, suppose have you have a car review with a single author BUT that author can have multiple reviews. That author has *one-to-many* relationship with those other reviews. Now suppsoe that for each of those reviews, the first and last name of that author are repeated for each review that they make (i.e. each document in the collection of the database).
 
 
 
