@@ -124,7 +124,7 @@ To create a schema, you first need to set the schema you want to create to a new
 <br>
 
 ## What is a virtual and how do you create one?
-A virtual allows you to manipulate the properties inside your schema object for use in your application. In our Car example, suppose we want to concatenate (combine) the make and model of
+***A virtual allows you to manipulate the properties inside your schema object for use in your application.*** In our Car example, suppose we want to concatenate (combine) the make and model of
 the car into one cohesive string. To do this, you need to call the schema (e.g. carSchema), define the virtual name (e.g. fullCarName). Then you chain the ".get" method and return the desired value. In the example below, we'll use a template literal to concatenate the properties of make and model to create a full car name. Note here that we use the *.trim* method do remove any whitespace from the properties.
 ```JavaScript
     carSchema.virtual('fullCarName').get(function() {
